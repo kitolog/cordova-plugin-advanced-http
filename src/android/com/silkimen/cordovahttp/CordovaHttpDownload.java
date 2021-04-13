@@ -15,10 +15,10 @@ import org.json.JSONObject;
 class CordovaHttpDownload extends CordovaHttpBase {
   private String filePath;
 
-  public CordovaHttpDownload(String url, JSONObject headers, String filePath, int timeout, boolean followRedirects,
+  public CordovaHttpDownload(String url, JSONObject headers, String filePath, int timeout, int connectTimeout, boolean followRedirects,
       TLSConfiguration tlsConfiguration, CordovaObservableCallbackContext callbackContext) {
 
-    super("GET", url, headers, timeout, followRedirects, "text", tlsConfiguration, callbackContext);
+    super("GET", url, headers, timeout, connectTimeout, followRedirects, "text", tlsConfiguration, callbackContext);
     this.filePath = filePath;
   }
 

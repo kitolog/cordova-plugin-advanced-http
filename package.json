@@ -1,7 +1,7 @@
 {
-  "name": "cordova-plugin-advanced-http",
-  "version": "3.1.1",
-  "description": "Cordova / Phonegap plugin for communicating with HTTP servers using SSL pinning",
+  "name": "cordova-plugin-advanced-http-timeouts",
+  "version": "3.2.0",
+  "description": "Cordova / Phonegap plugin for communicating with HTTP servers using SSL pinning with open timeout support",
   "scripts": {
     "updatecert": "node ./scripts/update-e2e-server-cert.js && node ./scripts/update-e2e-client-cert.js",
     "buildbrowser": "./scripts/build-test-app.sh --browser",
@@ -15,7 +15,7 @@
     "release": "npm run test && ./scripts/release.sh"
   },
   "cordova": {
-    "id": "cordova-plugin-advanced-http",
+    "id": "cordova-plugin-advanced-http-timeouts",
     "platforms": [
       "ios",
       "android"

@@ -12,6 +12,8 @@ module.exports = function init(exec, cookieHandler, urlUtil, helpers, globalConf
     getCookieString: getCookieString,
     getRequestTimeout: getRequestTimeout,
     setRequestTimeout: setRequestTimeout,
+    getRequestConnectTimeout: getRequestConnectTimeout,
+    setRequestConnectTimeout: setRequestConnectTimeout,
     getFollowRedirect: getFollowRedirect,
     setFollowRedirect: setFollowRedirect,
     setServerTrustMode: setServerTrustMode,
@@ -99,6 +101,14 @@ module.exports = function init(exec, cookieHandler, urlUtil, helpers, globalConf
     globalConfigs.timeout = helpers.checkTimeoutValue(timeout);
   }
 
+  function getRequestConnectTimeout() {
+    return globalConfigs.connectTimeout;
+  }
+
+  function setRequestConnectTimeout(timeout) {
+    globalConfigs.connectTimeout = helpers.checkTimeoutValue(timeout);
+  }
+
   function getFollowRedirect() {
     return globalConfigs.followRedirect;
   }
@@ -151,20 +161,20 @@ module.exports = function init(exec, cookieHandler, urlUtil, helpers, globalConf
       case 'put':
       case 'patch':
         helpers.processData(options.data, options.serializer, function (data) {
-          exec(onSuccess, onFail, 'CordovaHttpPlugin', options.method, [url, data, options.serializer, headers, options.timeout, options.followRedirect, options.responseType, reqId]);
+          exec(onSuccess, onFail, 'CordovaHttpPlugin', options.method, [url, data, options.serializer, headers, options.timeout, options.connectTimeout, options.followRedirect, options.responseType, reqId]);
         });
         break;
       case 'upload':
         var fileOptions = helpers.checkUploadFileOptions(options.filePath, options.name);
-        exec(onSuccess, onFail, 'CordovaHttpPlugin', 'uploadFiles', [url, headers, fileOptions.filePaths, fileOptions.names, options.timeout, options.followRedirect, options.responseType, reqId]);
+        exec(onSuccess, onFail, 'CordovaHttpPlugin', 'uploadFiles', [url, headers, fileOptions.filePaths, fileOptions.names, options.timeout, options.connectTimeout, options.followRedirect, options.responseType, reqId]);
         break;
       case 'download':
         var filePath = helpers.checkDownloadFilePath(options.filePath);
         var onDownloadSuccess = helpers.injectCookieHandler(url, helpers.injectFileEntryHandler(success));
-        exec(onDownloadSuccess, onFail, 'CordovaHttpPlugin', 'downloadFile', [url, headers, filePath, options.timeout, options.followRedirect, reqId]);
+        exec(onDownloadSuccess, onFail, 'CordovaHttpPlugin', 'downloadFile', [url, headers, filePath, options.timeout, options.connectTimeout, options.followRedirect, reqId]);
         break;
       default:
-        exec(onSuccess, onFail, 'CordovaHttpPlugin', options.method, [url, headers, options.timeout, options.followRedirect, options.responseType, reqId]);
+        exec(onSuccess, onFail, 'CordovaHttpPlugin', options.method, [url, headers, options.timeout, options.connectTimeout, options.followRedirect, options.responseType, reqId]);
         break;
     }
 
