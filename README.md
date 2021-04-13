@@ -1,4 +1,4 @@
-Cordova Advanced HTTP
+Cordova Advanced HTTP with connection timeout
 =====================
 [![npm version](https://img.shields.io/npm/v/cordova-plugin-advanced-http)](https://www.npmjs.com/package/cordova-plugin-advanced-http?activeTab=versions)
 [![MIT Licence](https://img.shields.io/badge/license-MIT-blue?style=flat)](https://opensource.org/licenses/mit-license.php)
@@ -10,7 +10,11 @@ Cordova Advanced HTTP
 
 Cordova / Phonegap plugin for communicating with HTTP servers.  Supports iOS, Android and [Browser](#browserSupport).
 
+This is a fork of [silkimen Cordova Advanced HTTP plugin](https://github.com/silkimen/cordova-plugin-advanced-http).
+
 This is a fork of [Wymsee's Cordova-HTTP plugin](https://github.com/wymsee/cordova-HTTP).
+
+#### Added connection timeouts support
 
 ## Advantages over Javascript requests
 
