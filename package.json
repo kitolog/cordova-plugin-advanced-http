@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-advanced-http-timeouts",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "Cordova / Phonegap plugin for communicating with HTTP servers using SSL pinning with open timeout support",
   "scripts": {
     "updatecert": "node ./scripts/update-e2e-server-cert.js && node ./scripts/update-e2e-client-cert.js",
